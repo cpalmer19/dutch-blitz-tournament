@@ -169,7 +169,7 @@ function createRoundTable(roundNum, pairings, playerNames) {
 
         html += `<tr>
             <td>${pairNames}</td>
-            <td><input type="number" class="roundScore ${classes}" /></td>
+            <td><input type="text" class="roundScore ${classes}" /></td>
         </tr>`;
     }
 
