@@ -4,4 +4,4 @@ A schedule generator and score keeper for a Dutch Blitz doubles round robin tour
 Simply enter the names of the players, then hit 'Start Tournament'. The unique doubles pairings
 for each round are generated, and you can enter their scores for each round.
 
-Each player's total score is automatically updated to keep track of who is doing the best!
+Each player's total score is automatically updated and ranked to keep track of who is doing the best!

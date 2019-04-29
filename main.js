@@ -191,7 +191,7 @@ function handlePlayerNumChange(event) {
     for (let i = 0; i < numPlayers; i++) {
         playerTable.append(`<tr>
             <td><input type="text" id="playerName${i}" /></td>
-            <td id="playerTotal${i}"></td>
+            <td class="playerTotal" id="playerTotal${i}"></td>
         </tr>`);
     }
 }
@@ -208,6 +208,7 @@ function handleScoreChange(event) {
             updateScore(cls);
         }
     }
+    sortPlayersByScore();
 }
 
 /**
@@ -245,4 +246,18 @@ function resetData() {
 
     // enable changing number of players
     $('#numPlayerSelect').prop("disabled", false);
+}
+
+/**
+ * Sort the players from highest to lowest score.
+ */
+function sortPlayersByScore() {
+    let tableBody = $("#playerTableBody");
+    let rows = tableBody.find("tr");
+
+    let sorter = row => $(row).find(".playerTotal").text();
+    rows.sort((a, b) => sorter(b) - sorter(a));
+
+    tableBody.empty();
+    tableBody.append(rows);
 }
