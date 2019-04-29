@@ -39,6 +39,9 @@ function generateTournament() {
 
     // disable changing number of players
     $('#numPlayerSelect').prop("disabled", true);
+
+    // disable editing the player names
+    $('#playerTableBody').find('input').prop("disabled", true);
 }
 
 /**
