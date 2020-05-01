@@ -62,20 +62,26 @@ function handleClearButton() {
 
 /**
  * Handle when the number of players is changed in the 'select' box.
- * It clears the player table and creates the appropriate number of rows.
+ * It adds or removes the appropriate number of rows from the existing table.
  * @param {Event} event - the triggered change event
  */
 function handlePlayerNumChange(event) {
-    const numPlayers = parseInt(event.target.value);
-
     const playerTable = $('#playerTableBody');
-    playerTable.html('');
+    const numPlayers = parseInt(event.target.value);
+    const oldNumPlayers = playerTable.find('tr').length;
 
-    for (let i = 0; i < numPlayers; i++) {
-        playerTable.append(`<tr>
-            <td><input type="text" id="playerName${i}" /></td>
-            <td class="playerTotal" id="playerTotal${i}"></td>
-        </tr>`);
+    if (numPlayers > oldNumPlayers) {
+        // add the extra rows to the end
+        for (let i = oldNumPlayers; i < numPlayers; i++) {
+            playerTable.append(`<tr>
+                <td><input type="text" id="playerName${i}" /></td>
+                <td class="playerTotal" id="playerTotal${i}"></td>
+            </tr>`);
+        }
+    } else if (oldNumPlayers > numPlayers) {
+        // remove the extra rows from the end
+        let numExtra = oldNumPlayers - numPlayers;
+        playerTable.find('tr').slice(-numExtra).remove();
     }
 }
 
